@@ -4,7 +4,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.*;
 
-class Student_J07052 implements Comparable<Student_J07052> {
+class   Student_J07052 implements Comparable<Student_J07052> {
     String code;
     String name;
     double toan;

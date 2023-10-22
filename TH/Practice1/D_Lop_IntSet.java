@@ -1,11 +1,11 @@
-package BT;
+package TH.Practice1;
 
 import java.util.*;
 
-class IntSet_J04021 {
+class IntSet_D {
     private ArrayList<Integer> arr = new ArrayList<>();
     private int[] d = new int[1005];
-    public IntSet_J04021(int[] arr) {
+    public IntSet_D(int[] arr) {
         for(int i = 0; i < 1005; i++) {
             this.d[i] = 0;
         }
@@ -19,7 +19,7 @@ class IntSet_J04021 {
         }
     }
 
-    public IntSet_J04021 union(IntSet_J04021 a) {
+    public IntSet_D union(IntSet_D a) {
         ArrayList<Integer> tmp = new ArrayList<>();
         int[] cnt = new int[1005];
         for(Integer i : this.arr) {
@@ -37,7 +37,7 @@ class IntSet_J04021 {
         for(int i = 0; i < tmp.size(); i++) {
             ans[i] = tmp.get(i);
         }
-        return new IntSet_J04021(ans);
+        return new IntSet_D(ans);
     }
 
     @Override
@@ -49,15 +49,15 @@ class IntSet_J04021 {
         return ans;
     }
 }
-public class J04021_Lop_IntSet {
+public class D_Lop_IntSet {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt(), m = sc.nextInt(), a[] = new int[n], b[] = new int[m];
         for(int i = 0; i<n; i++) a[i] = sc.nextInt();
         for(int i = 0; i<m; i++) b[i] = sc.nextInt();
-        IntSet_J04021 s1 = new IntSet_J04021(a);
-        IntSet_J04021 s2 = new IntSet_J04021(b);
-        IntSet_J04021 s3 = s1.union(s2);
+        IntSet_D s1 = new IntSet_D(a);
+        IntSet_D s2 = new IntSet_D(b);
+        IntSet_D s3 = s1.union(s2);
         System.out.println(s3);
     }
 }

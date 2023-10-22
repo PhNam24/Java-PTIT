@@ -14,15 +14,13 @@ public class J07085_Tong_chu_so {
             for(int i = 0; i < string.length(); i++) {
                 if(Character.isDigit(string.charAt(i))) {
                     if(string.charAt(i) == '0') {
-                        if(checkZero) {
+                        if(!checkZero) {
                             tmp += string.charAt(i);
-                        }
-                        else {
-                            checkZero = false;
                         }
                     }
                     else {
                         tmp += string.charAt(i);
+                        checkZero = false;
                     }
                     sum += string.charAt(i) - '0';
                 }

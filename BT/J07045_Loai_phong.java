@@ -49,28 +49,4 @@ public class J07045_Loai_phong {
             System.out.println(tmp);
         }
     }
-    public static void main7977124(String[] args) throws IOException {
-        ArrayList<LoaiPhong_J07045> ds = new ArrayList<>();
-        Scanner in = new Scanner(new File("PHONG.in"));
-        int n = Integer.parseInt(in.nextLine());
-        while(n-->0){
-            ds.add(new LoaiPhong_J07045(in.nextLine()));
-        }
-        Collections.sort(ds);
-        for(LoaiPhong_J07045 tmp : ds){
-            System.out.println(tmp);
-        }
-    }
-    public static void main1278775(String[] args) throws IOException {
-        ArrayList<LoaiPhong_J07045> ds = new ArrayList<>();
-        Scanner in = new Scanner(new File("PHONG.in"));
-        int n = Integer.parseInt(in.nextLine());
-        while(n-->0){
-            ds.add(new LoaiPhong_J07045(in.nextLine()));
-        }
-        Collections.sort(ds);
-        for(LoaiPhong_J07045 tmp : ds){
-            System.out.println(tmp);
-        }
-    }
 }
