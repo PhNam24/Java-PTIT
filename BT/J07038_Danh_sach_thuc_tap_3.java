@@ -15,9 +15,21 @@ class Company_J07038 {
     public String getCode() {
         return this.code;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getSoLuong() {
+        return this.soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
 }
 
-class Student_J07038 {
+class Student_J07038 implements Comparable<Student_J07038> {
     private String code, name, lop, email;
     private Company_J07038 company;
     public Student_J07038(String code, String name, String lop, String email) {
@@ -35,9 +47,17 @@ class Student_J07038 {
     public String getCode() {
         return this.code;
     }
+
+    public Company_J07038 getCompany() {
+        return this.company;
+    }
+
     @Override
     public String toString() {
         return this.code + " " + this.name + " " + this.lop;
+    }
+    public int compareTo(Student_J07038 a) {
+        return this.code.compareTo(a.code);
     }
 }
 
@@ -54,7 +74,7 @@ public class J07038_Danh_sach_thuc_tap_3 {
         return ans;
     }
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(new File("SINHVIEN.in"));
+        Scanner scanner = new Scanner(new File("BT/InputFile/SINHVIEN.in"));
         int n = Integer.parseInt(scanner.nextLine());
         ArrayList<Student_J07038> a = new ArrayList<>();
         for(int i = 0; i < n; i++) {
@@ -64,7 +84,8 @@ public class J07038_Danh_sach_thuc_tap_3 {
             String email = scanner.nextLine();
             a.add(new Student_J07038(code, name, lop, email));
         }
-        scanner = new Scanner(new File("DN.in"));
+        Collections.sort(a);
+        scanner = new Scanner(new File("BT/InputFile/DN.in"));
         n = Integer.parseInt(scanner.nextLine());
         ArrayList<Company_J07038> b = new ArrayList<>();
         Map<String, String> map = new HashMap<>();
@@ -75,15 +96,23 @@ public class J07038_Danh_sach_thuc_tap_3 {
             int soLuong = Integer.parseInt(scanner.nextLine());
             b.add(new Company_J07038(code, name, soLuong));
         }
-        scanner = new Scanner(new File("THUCTAP.in"));
+        scanner = new Scanner(new File("BT/InputFile/THUCTAP.in"));
         n = Integer.parseInt(scanner.nextLine());
         for(int i = 0; i < n; i++) {
             String[] input = scanner.nextLine().split("\\s+");
+            String code = "";
+            for(int j = 1; j < input.length; j++) {
+                code += input[j];
+                if(j < input.length - 1) {
+                    code += " ";
+                }
+            }
             for(Student_J07038 j: a) {
                 boolean check = false;
                 if(j.getCode().equals(input[0])) {
                     for(Company_J07038 k: b) {
-                        if(k.getCode().equals(input[1])) {
+                        if(k.getCode().equals(code) && k.getSoLuong() > 0) {
+                            k.setSoLuong(k.getSoLuong() - 1);
                             j.setCompany(k);
                             check = true;
                             break;
@@ -92,6 +121,16 @@ public class J07038_Danh_sach_thuc_tap_3 {
                     if(check) {
                         break;
                     }
+                }
+            }
+        }
+        n = Integer.parseInt(scanner.nextLine());
+        for(int i = 0; i < n; i++) {
+            String input = scanner.nextLine();
+            System.out.println("DANH SACH THUC TAP TAI " + map.get(input) + ":");
+            for(Student_J07038 j: a) {
+                if(j.getCompany() != null && j.getCompany().getCode().equals(input)) {
+                    System.out.println(j);
                 }
             }
         }
